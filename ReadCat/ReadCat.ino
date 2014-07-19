@@ -1,6 +1,8 @@
 /* read cat */
-
+// Lily, Amelia , Tucker litter box descriminator
 #include <toneAC.h>
+#include <MemoryFree.h>
+
 #define OCTAVE_OFFSET 0
 
 #define NOTE_B0  31
@@ -100,16 +102,17 @@ int notes[] = {
   NOTE_C6, NOTE_CS6, NOTE_D6, NOTE_DS6, NOTE_E6, NOTE_F6, NOTE_FS6, NOTE_G6, NOTE_GS6, NOTE_A6, NOTE_AS6, NOTE_B6,
   NOTE_C7, NOTE_CS7, NOTE_D7, NOTE_DS7, NOTE_E7, NOTE_F7, NOTE_FS7, NOTE_G7, NOTE_GS7, NOTE_A7, NOTE_AS7, NOTE_B7
 };
+#include <avr/pgmspace.h>
 
-char *song = "MissionImp:d=16,o=6,b=95:32d,32d#,32d,32d#,32d,32d#,32d,32d#,32d,32d,32d#,32e,32f,32f#,32g,g,8p,g,8p,a#,p,c7,p,g,8p,g,8p,f,p,f#,p,g,8p,g,8p,a#,p,c7,p,g,8p,g,8p,f,p,f#,p,a#,g,2d,32p,a#,g,2c#,32p,a#,g,2c,a#5,8c,2p,32p,a#5,g5,2f#,32p,a#5,g5,2f,32p,a#5,g5,2e,d#,8d";
-//char *song0 = "pacman:d=4,o=5,b=112:32b,32p,32b6,32p,32f#6,32p,32d#6,32p,32b6,32f#6,16p,16d#6,16p,32c6,32p,32c7,32p,32g6,32p,32e6,32p,32c7,32g6,16p,16e6,16p,32b,32p,32b6,32p,32f#6,32p,32d#6,32p,32b6,32f#6,16p,16d#6,16p,32d#6,32e6,32f6,32p,32f6,32f#6,32g6,32p,32g6,32g#6,32a6,32p,32b.6";
-//char *song1 = "wwtbam1:d=4,o=5,b=140:16g,16c6,16d#6,16g6,16c7,16g6,16d#6,16c6,16g,16c6,16d#6,16g6,16c7,16g6,16d#6,16c6,16g#,16c6,16d#6,16g#6,16c7,16g#6,16d#6,16c6,16g#,16c6,16d#6,16g#6,16c7,16g#6,16d#6,16c6,16f#,16c6,16d#6,16f#6,16c7,16f#6,16d#6,16c6,16f#,16c6,16d#6,16f#6,16c7,16f#6,16d#6,16c6,16g,16b,16d6,16g6,16b6,16g6,16d6,16b,16g,16b,16d6,16g6,16b6,16g6,16d6,16b";
-//char *song2 = "Barbie girl:d=4,o=5,b=125:8g#,8e,8g#,8c#6,a,p,8f#,8d#,8f#,8b,g#,8f#,8e,p,8e,8c#,f#,c#,p,8f#,8e,g#,f#";
-//char *song3 = "KnightRider:d=4,o=5,b=63:16e,32f,32e,8b,16e6,32f6,32e6,8b,16e,32f,32e,16b,16e6,d6,8p,p,16e,32f,32e,8b,16e6,32f6,32e6,8b,16e,32f,32e,16b,16e6,f6,p";
-char *song4 = "PinkPanther:d=4,o=5,b=160:8d#,8e,2p,8f#,8g,2p,8d#,8e,16p,8f#,8g,16p,8c6,8b,16p,8d#,8e,16p,8b,2a#,2p,16a,16g,16e,16d,2e";
-//char *song5 = "axelf:d=4,o=5,b=160:f#,8a.,8f#,16f#,8a#,8f#,8e,f#,8c.6,8f#,16f#,8d6,8c#6,8a,8f#,8c#6,8f#6,16f#,8e,16e,8c#,8g#,f#";
-//char *song6 = "Xfiles:d=4,o=5,b=125:e,b,a,b,d6,2b.,1p,e,b,a,b,e6,2b.,1p,g6,f#6,e6,d6,e6,2b.,1p,g6,f#6,e6,d6,f#6,2b.,1p,e,b,a,b,d6,2b.,1p,e,b,a,b,e6,2b.,1p,e6,2b";
-//char *song7 = "YMCA:d=4,o=5,b=160:8c#6,8a#,2p,8a#,8g#,8f#,8g#,8a#,c#6,8a#,c#6,8d#6,8a#,2p,8a#,8g#,8f#,8g#,8a#,c#6,8a#,c#6,8d#6,8b,2p,8b,8a#,8g#,8a#,8b,d#6,8f#6,d#6,f.6,d#.6,c#.6,b.,a#,g#";
+PGM_P PROGMEM song0  = "pacman:d=4,o=5,b=112:32b,32p,32b6,32p,32f#6,32p,32d#6,32p,32b6,32f#6,16p,16d#6,16p,32c6,32p,32c7,32p,32g6,32p,32e6,32p,32c7,32g6,16p,16e6,16p,32b,32p,32b6,32p,32f#6,32p,32d#6,32p,32b6,32f#6,16p,16d#6,16p,32d#6,32e6,32f6,32p,32f6,32f#6,32g6,32p,32g6,32g#6,32a6,32p,32b.6";
+PGM_P PROGMEM song1  = "wwtbam1:d=4,o=5,b=140:16g,16c6,16d#6,16g6,16c7,16g6,16d#6,16c6,16g,16c6,16d#6,16g6,16c7,16g6,16d#6,16c6,16g#,16c6,16d#6,16g#6,16c7,16g#6,16d#6,16c6,16g#,16c6,16d#6,16g#6,16c7,16g#6,16d#6,16c6,16f#,16c6,16d#6,16f#6,16c7,16f#6,16d#6,16c6,16f#,16c6,16d#6,16f#6,16c7,16f#6,16d#6,16c6,16g,16b,16d6,16g6,16b6,16g6,16d6,16b,16g,16b,16d6,16g6,16b6,16g6,16d6,16b";
+PGM_P PROGMEM song   = "MissionImp:d=16,o=6,b=95:32d,32d#,32d,32d#,32d,32d#,32d,32d#,32d,32d,32d#,32e,32f,32f#,32g,g,8p,g,8p,a#,p,c7,p,g,8p,g,8p,f,p,f#,p,g,8p,g,8p,a#,p,c7,p,g,8p,g,8p,f,p,f#,p,a#,g,2d,32p,a#,g,2c#,32p,a#,g,2c,a#5,8c,2p,32p,a#5,g5,2f#,32p,a#5,g5,2f,32p,a#5,g5,2e,d#,8d";
+PGM_P PROGMEM song2  = "Barbie girl:d=4,o=5,b=125:8g#,8e,8g#,8c#6,a,p,8f#,8d#,8f#,8b,g#,8f#,8e,p,8e,8c#,f#,c#,p,8f#,8e,g#,f#";
+PGM_P PROGMEM song3  = "KnightRider:d=4,o=5,b=63:16e,32f,32e,8b,16e6,32f6,32e6,8b,16e,32f,32e,16b,16e6,d6,8p,p,16e,32f,32e,8b,16e6,32f6,32e6,8b,16e,32f,32e,16b,16e6,f6,p";
+PGM_P PROGMEM song4  = "PinkPanther:d=4,o=5,b=160:8d#,8e,2p,8f#,8g,2p,8d#,8e,16p,8f#,8g,16p,8c6,8b,16p,8d#,8e,16p,8b,2a#,2p,16a,16g,16e,16d,2e";
+//PGM_P PROGMEM song5  = "axelf:d=4,o=5,b=160:f#,8a.,8f#,16f#,8a#,8f#,8e,f#,8c.6,8f#,16f#,8d6,8c#6,8a,8f#,8c#6,8f#6,16f#,8e,16e,8c#,8g#,f#";
+//PGM_P PROGMEM song6  = "Xfiles:d=4,o=5,b=125:e,b,a,b,d6,2b.,1p,e,b,a,b,e6,2b.,1p,g6,f#6,e6,d6,e6,2b.,1p,g6,f#6,e6,d6,f#6,2b.,1p,e,b,a,b,d6,2b.,1p,e,b,a,b,e6,2b.,1p,e6,2b";
+//PGM_P PROGMEM song7  = "YMCA:d=4,o=5,b=160:8c#6,8a#,2p,8a#,8g#,8f#,8g#,8a#,c#6,8a#,c#6,8d#6,8a#,2p,8a#,8g#,8f#,8g#,8a#,c#6,8a#,c#6,8d#6,8b,2p,8b,8a#,8g#,8a#,8b,d#6,8f#6,d#6,f.6,d#.6,c#.6,b.,a#,g#";
 
 #include <Adafruit_PN532.h>
 
@@ -142,6 +145,8 @@ void uidToString(const byte * data, char *out){
 void setup(void) {
   Serial.begin(9600);
   Serial.println("Hey Cats, wat up?");
+  Serial.print("freeMemory()=");
+  Serial.println(freeMemory());
 
   nfc.begin();
 
@@ -174,7 +179,7 @@ void loop(void) {
   uint8_t success;
   char catID[9];
   uint8_t uid[] = { 
-    0, 0, 0, 0, 0, 0, 0 ,0 ,0    };  // Buffer to store the returned UID
+    0, 0, 0, 0, 0, 0, 0 ,0 ,0      };  // Buffer to store the returned UID
   uint8_t uidLength;                        // Length of the UID (4 or 7 bytes depending on ISO14443A card type)
 
   // Wait for an ISO14443A type cards (Mifare, etc.).  When one is found
@@ -192,16 +197,33 @@ void loop(void) {
       toneAC();
     }
     if(strcmp("9DC5C723",catID)==0){ // tag 'Anita'
+      play_rtttl(song0);   
+      toneAC();
+    }
+
+    if(strcmp("BB91727F",catID)==0){ // tag 'Tucker'
+      play_rtttl(song3);   
+      toneAC();
+    }
+
+    if(strcmp("EB3A87BD",catID)==0){ // tag 'Lily'
       play_rtttl(song4);   
       toneAC();
     }
+
+    if(strcmp("CB127BBD",catID)==0){ // tag 'Amelia'
+      play_rtttl(song2);   //Barbie girl
+      toneAC();
+    }
+
+
   } 
   delay(1000);
 }
 
 
 
-void play_rtttl(char *p)
+void play_rtttl( const char *p)
 {
   // Absolutely no error checking in here on arduino segway clone
   byte default_dur = 4;
@@ -348,6 +370,7 @@ void play_rtttl(char *p)
     }
   }
 }
+
 
 
 
